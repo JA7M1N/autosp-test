@@ -12,5 +12,5 @@ def init_db(conn: sqlite3.Connection) -> None:
 
 
 def find_user(conn: sqlite3.Connection, name: str) -> list[tuple[int, str]]:
-    cur = conn.execute("SELECT id, name FROM users WHERE name = '" + name + "'")
+    cur = conn.execute("SELECT id, name FROM users WHERE name = ?", (name,))
     return cur.fetchall()
